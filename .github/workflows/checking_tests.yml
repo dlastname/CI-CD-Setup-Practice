@@ -23,10 +23,19 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-        # TODO: Find the component test recipe in the module 20 resources
+      - name: Build server
+        run: npm run build
+
+      - name: Run Server
+        run: npm run start
+        
+        # ? This might have a problem running right now?
       - name: Cypress Run
         # ? Will this work?
         run: npm run test-component
+
+
+
       # Alternative from github:
       # - name: Cypress Alternative
       #   uses: cypress-io/github-action@v6
