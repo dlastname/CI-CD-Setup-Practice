@@ -1,0 +1,34 @@
+name: Checking Tests
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - staging
+
+jobs:
+  test:
+    name: Component Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 21.x
+
+      - name: Install dependencies
+        run: npm install
+
+        # TODO: Find the component test recipe in the module 20 resources
+      - name: Cypress Run
+        # ? Will this work?
+        run: npm run test-component
+      # Alternative from github:
+      # - name: Cypress Alternative
+      #   uses: cypress-io/github-action@v6
+      #   with:
+      #     component: true
